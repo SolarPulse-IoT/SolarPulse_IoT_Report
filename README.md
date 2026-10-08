@@ -533,7 +533,7 @@ Jefes de hogar de Lima interesados en migrar a energía solar para reducir sus r
 
 Las entrevistas fueron registradas en video y se organizaron según el segmento objetivo correspondiente. Cada registro incluye información básica del entrevistado, captura del video, enlace, timing, duración y un resumen descriptivo de sus respuestas, prestando especial atención a sus hábitos tecnológicos y pain points.
 
-**Enlace del video consolidado de entrevistas:** [Entrevistas juntas]()
+**Enlace del video consolidado de entrevistas:** [Entrevistas juntas](https://upcedupe-my.sharepoint.com/personal/u20211a574_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu20211a574_upc_edu_pe%2FDocuments%2Fupc-pre-202610-1asi0787-15869-Heliosync_Technologie-needfinding-TP1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0=&ga=1)
 
 ##### Segmento Objetivo 1: Gestores de Activos Comerciales e Industriales Ligeros (Pymes)
 
@@ -585,9 +585,9 @@ El análisis de entrevistas permite identificar patrones recurrentes, caracterí
 
 | Segmento | Entrevistas analizadas | Cantidad |
 | :--- | :--- | :--- |
-| Gestores de Activos Comerciales e Industriales Ligeros | [Agregar nombre entrevistados] | 1 |
-| Familias Residenciales con Sistemas Solares Activos | [Agregar nombre entrevistados] | 1 |
-| Hogares en Transición Energética | [Agregar nombre entrevistados] | 1 |
+| Gestores de Activos Comerciales e Industriales Ligeros | Elias Coronel | 1 |
+| Familias Residenciales con Sistemas Solares Activos | Adriana Salazar | 1 |
+| Hogares en Transición Energética | Katia Chilo Vargas | 1 |
 | **Total** | — | **3** |
 
 ##### Segmento Objetivo 1: Gestores de Activos Comerciales e Industriales Ligeros
