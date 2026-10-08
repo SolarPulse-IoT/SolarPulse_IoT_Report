@@ -93,7 +93,7 @@ Para el Trabajo Parcial, el equipo de SolarPulse IoT organizó la elaboración d
     - [Antecedentes y problemáticas](#121-antecedentes-y-problemáticas)
     - [Propuestas de valor](#122-propuestas-de-valor)
   - [Segmentos objetivo](#13-segmentos-objetivo)
-- [CAPÍTULO II: RECOPILACIÓN Y ANÁLISIS DE REQUISITOS](#capítulo-ii-recopilación-y-análisis-de-requisitos)
+- [CAPÍTULO II: RECOPILACIÓN Y ANÁLISIS DE REQUISITOS](#)
   - [Entrevistas](#21-entrevistas)
     - [Diseño de entrevistas](#211-diseño-de-entrevistas)
     - [Registro de entrevistas](#212-registro-de-entrevistas)
@@ -107,10 +107,10 @@ Para el Trabajo Parcial, el equipo de SolarPulse IoT organizó la elaboración d
   - [Enfoque relacional](#33-enfoque-relacional)
     - [Diagrama entidad-relación lógico](#331-diagrama-entidad-relación-lógico)
 - [CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS](#capítulo-iv-implementación-de-base-de-datos)
-  - [Sistemas de gestión de base de datos](#sistemas-de-gestión-de-base-de-datos)
-    - [Evaluación y elección del sistema de gestión de base de datos relacional](#evaluación-y-elección-del-sistema-de-gestión-de-base-de-datos-relacional)
-  - [Diagramas de datos](#diagramas-de-datos)
-    - [Diagrama entidad-relación físico](#diagrama-entidad-relación-físico)
+  - [Sistemas de gestión de base de datos](#41-sistemas-de-gestión-de-base-de-datos)
+    - [Evaluación y elección del sistema de gestión de base de datos relacional](#411-evaluación-y-elección-del-sistema-de-gestión-de-base-de-datos-relacional)
+  - [Diagramas de datos](#42-diagramas-de-datos)
+    - [Diagrama entidad-relación físico](#421-diagrama-entidad-relación-físico)
 - [Conclusiones](#conclusiones)
 - [BIBLIOGRAFÍA](#bibliografía)
 - [ANEXOS](#anexos)
@@ -951,7 +951,7 @@ El diagrama de entidad-relación lógico constituye la representación estructur
 <div style="page-break-before: always;"></div>
 
 
-# 4. CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS
+# CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS
 
 ## 4.1. Sistemas de gestión de base de datos
 
