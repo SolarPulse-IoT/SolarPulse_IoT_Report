@@ -1063,13 +1063,13 @@ Link del reporte: [Reporte](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Rep
 
 Imagen referencial: 
 
-![ScreenShot_Repositorio_Reporte](assets/Chapter-4/Diagrama_fisico_sin_Normalizar.png)
+![ScreenShot_Repositorio_Reporte](assets/Chapter-4/Reporte.png)
 
 Link del reporte: [Diagramas ERD](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Diagram_DataBase)
 
 Imagen referencial:
 
-![ScreenShot_Repositorio_DiagramaERD](assets/Chapter-4/Diagrama_fisco_Normalizado.png)
+![ScreenShot_Repositorio_DiagramaERD](assets/Chapter-4/DiagramasERD.png)
 
 
 
