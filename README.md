@@ -70,7 +70,7 @@
 
 # Project Report Collaboration Insights
 
-**URL del repositorio del informe:** https://github.com/Renzo-J-Navarro/SolarPulse_IoT
+**URL del repositorio del informe:** https://github.com/SolarPulse-IoT/SolarPulse_IoT_Report
 
 ### TP1
 
@@ -425,6 +425,9 @@ Propuesta de Valor / Beneficio Buscado: Certeza y acompañamiento técnico antes
 - Instalaciones: Parámetros de factores de emisión locales ($kgCO_2/kWh$) para calcular equivalencias tangibles (árboles equivalentes plantados y emisiones evitadas) como factor motivacional de adopción.
 
 
+<div style="page-break-before: always;"></div>
+
+
 # CAPÍTULO II: RECOPILACIÓN Y ANÁLISIS DE REQUISITOS
 
 ## 2.1. Entrevistas
@@ -713,6 +716,9 @@ El segmento de hogares en transición energética está conformado por usuarios 
 | RNF-9 | Registrar y enlazar automáticamente el identificador de la anomalía, la alerta y la incidencia técnica generada en no más de 2 segundos. | Trazabilidad |
 | RNF-10 | Documentar en la base de datos el historial secuencial de intervenciones (orden de trabajo, técnico asignado, tareas y repuestos utilizados) en un tiempo menor a 3 segundos por evento. | Trazabilidad |
 
+<div style="page-break-before: always;"></div>
+
+
 # CAPÍTULO III: DISEÑO DE BASE DE DATOS
 ## 3.1. Entidades
 
@@ -941,5 +947,130 @@ El diagrama de entidad-relación lógico constituye la representación estructur
 <p align="center">
   <img src="assets/Chapter-3/Solar_IOT_Entidad-Relacion_Logico.png" alt="Diagrama Entidad-Relacion Lógico de SolarPulse IoT" width="800px">
 </p>
+
+<div style="page-break-before: always;"></div>
+
+
+# 4. CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS
+
+## 4.1. Sistemas de gestión de base de datos
+
+Para la persistencia, integridad y disponibilidad operativa de la plataforma SolarPulse IoT, la selección del Sistema de Gestión de Bases de Datos Relacionales (RDBMS) representa una decisión crítica de arquitectura. El sistema debe responder simultáneamente a la ingesta continua de series temporales provenientes de sensores de corriente, voltaje y temperatura (requisitos no funcionales RNF-3 y RNF-4), así como a la gestión transaccional estricta de incidencias, trazabilidad de roles, clientes, órdenes de trabajo y control financiero de mantenimientos (requisitos US-01 a US-15 y RNF-2).
+
+### 4.1.1 Evaluación y elección del sistema de gestión de base de datos relacional
+
+Para determinar el motor idóneo, se evaluaron cinco de los RDBMS más consolidados de la industria bajo criterios directamente alineados a las exigencias de SolarPulse IoT: modelo de licenciamiento y costo total de propiedad (TCO), soporte para particionamiento temporal e ingesta masiva (series de tiempo), mecanismos de alta disponibilidad y recuperación ante desastres (RTO/RPO), madurez del ecosistema de herramientas de administración y compatibilidad con el entorno de desarrollo del proyecto.
+
+| Criterio de Evaluación | Microsoft SQL Server | PostgreSQL | MySQL | Oracle Database | MariaDB |
+| ---------------------- | -------------------- | ---------- | ------ | --------------- | ------- |
+| Licenciamiento y Costos | Propietario comercial. Cuenta con ediciones gratuitas (Express limitada a 10 GB y 1.4 GB RAM, y Developer para pruebas). Las licencias estándar/enterprise por núcleo conllevan costos elevados. | Código abierto permisivo (Licencia PostgreSQL / estilo MIT). Completamente gratuito para cualquier escala sin costos de licencias ni límites de hardware. | Dual (GPL v2 y Comercial bajo Oracle). La versión Community es gratuita, pero extensiones empresariales y soporte oficial requieren suscripción de pago. | Comercial propietario de alto costo corporativo. Ofrece versión gratuita Free/XE sujeta a fuertes restricciones de CPU, memoria y almacenamiento. | Código abierto (GPL v2). Proyecto comunitario abierto derivado de MySQL, gratuito sin restricciones de funcionalidad base. |
+| Ingesta Masiva y Telemetría IoT | Alto rendimiento con soporte para índices columnares (Clustered Columnstore Indexes), particionamiento de tablas y compresión nativa. Ingesta por lotes optimizada vía BULK INSERT / bcp. | Excepcional manejo de series temporales. Soporta particionamiento declarativo nativo, índices BRIN de muy bajo peso y extensibilidad transparente mediante extensiones como TimescaleDB. | Adecuado para lecturas rápidas con motor InnoDB, pero experimenta mayor contención de escritura en concurrencia masiva sin particionamientos avanzados. | Rendimiento sobresaliente a nivel empresarial con particionamiento avanzado e ingesta paralela, pero con una sobrecarga operativa y de configuración alta. | Rendimiento de escritura superior a MySQL gracias al motor de almacenamiento Aria y soporte de particionamiento estándar. |
+| Integridad Transaccional y ACID | Cumplimiento ACID completo y estricto. Excelente aislamiento con soporte para Snapshot Isolation mediante tempdb. | Cumplimiento ACID robusto mediante MVCC (Multi-Version Concurrency Control) maduro sin bloqueos de lectura/escritura. | Cumplimiento ACID en motor InnoDB. La consistencia en cargas mixtas de alta escritura y lectura analítica requiere ajustes finos de buffers. | Estándar de la industria en consistencia y transaccionalidad ACID para entornos corporativos de misión crítica. | Cumplimiento ACID estricto con motores InnoDB/XtraDB. |
+| Particionamiento y Escalabilidad | Particionamiento nativo horizontal disponible en ediciones Enterprise y Standard (desde SQL Server 2016 SP1). Requiere esquemas de funciones y esquemas de partición explícitos. | Particionamiento nativo declarativo por rango, lista o hash desde la versión 10+. Facilidad de automatización de particiones por fechas (clave para telemetría). | Particionamiento horizontal disponible (Range, List, Hash), con limitaciones en claves foráneas en tablas particionadas según versión de motor. | Particionamiento extremadamente avanzado (Composite, Interval, List, Range), con costo de licenciamiento adicional en entornos comerciales. | Particionamiento por rango y lista disponible, pero con ciertas restricciones en interoperabilidad con motores de almacenamiento secundarios. |
+| Recuperabilidad y Respaldo (RNF-7) | Respaldo diferencial, completo y de registros de transacciones (Point-in-Time Recovery). Grupos de disponibilidad Always On en niveles avanzados. | Copias de seguridad completas y continuas mediante WAL (Write-Ahead Logging) y Point-in-Time Recovery (PITR) nativo sin costo adicional. | Soporte de respaldos físicos y lógicos (mysqldump, MySQL Enterprise Backup); replicación nativa Maestro-Esclavo y Group Replication. | Soluciones líderes como Oracle RMAN (Recovery Manager) y Data Guard, orientadas a RTO y RPO mínimos en banca e industria pesada. | Soporte para copias consistentes mediante herramientas como Mariabackup y replicación síncrona multimaster con Galera Cluster. |
+| Herramientas de Administración | SQL Server Management Studio (SSMS) y Azure Data Studio: completas, intuitivas y con análisis gráfico de planes de ejecución. | pgAdmin, DBeaver, psql y DataGrip: ecosistema multiplataforma flexible y maduro. | MySQL Workbench y herramientas web (phpMyAdmin), funcionales pero con perfiles analíticos más básicos. | Oracle SQL Developer y Enterprise Manager: potentes pero con interfaces complejas y curvas de aprendizaje pronunciadas. | HeidiSQL, phpMyAdmin, DBeaver: herramientas ligeras y de rápida configuración. |
+| Compatibilidad con el Entorno de Trabajo | Alineación directa con el plan de estudios del curso de Base de Datos y herramientas de modelado de la universidad. | Alta compatibilidad general, estándar en arquitecturas de microservicios e IoT en la nube. | Alta disponibilidad en servidores LAMP y entornos web generales. | Complejidad de despliegue en entornos locales y requisitos pesados de recursos computacionales. | Compatible con el ecosistema de librerías y conectores de MySQL. |
+
+---
+
+**Justificación de la Elección: Microsoft SQL Server**
+
+Para el desarrollo del producto SolarPulse IoT en el marco del proyecto académico, se ratifica la selección de Microsoft SQL Server como el RDBMS principal por las siguientes consideraciones técnicas:
+* Soporte robusto para consultas analíticas y series de tiempo: Dispone de soporte nativo para Clustered Columnstore Indexes y particionamiento por rangos de fecha en su tabla Medicion, lo cual permite atender con solvencia el volumen de ingesta exigido por la telemetría (RNF-3) y garantizar tiempos de respuesta menores a 3 segundos en métricas agregadas (RNF-5).
+* Potencia y madurez en gobernanza de datos (T-SQL y SSMS): El ecosistema de SQL Server Management Studio (SSMS) ofrece herramientas de primer nivel para la creación de procedimientos almacenados, desencadenadores (triggers) para la detección automatizada de anomalías a partir de mediciones (US-06) y optimización de planes de ejecución.
+* Coherencia curricular y viabilidad de entrega: Dado que Microsoft SQL Server es el estándar adoptado en el curso, su utilización maximiza el aprovechamiento del tiempo de desarrollo, elimina la fricción técnica por incompatibilidad de sintaxis DDL/DML y garantiza una verificación directa por parte del docente respecto al diagrama físico y la implementación relacional.
+
+## 4.2. Diagramas de datos
+
+### 4.2.1. Diagrama entidad-relación físico
+
+Presentación del Diagrama Físico Sin Normalizar
+En este repositorio se presenta el desarrollo del Diagrama Físico de la Base de Datos, elaborado mediante un Diagrama Entidad-Relación (ERD).
+Como parte del desarrollo del proyecto, se tomó como referencia el Diagrama Lógico de la Base de Datos, en el cual se encuentran definidos con mayor precisión los atributos, entidades y relaciones necesarias para representar los requerimientos del sistema.
+El propósito del diagrama físico sin normalizar es realizar una primera representación de cómo se organizarían los datos dentro de una estructura de base de datos, considerando la información identificada durante el análisis de los requerimientos del sistema.
+Esta representación permite visualizar las entidades y sus respectivos atributos antes de aplicar las reglas de normalización. De esta manera, se busca mantener una correspondencia entre los requerimientos planteados y la información que deberá ser almacenada, evitando la pérdida de datos importantes y asegurando que la base de datos pueda soportar las funcionalidades esperadas por los usuarios.
+
+> **Artefacto:** Enfoque Entidad-Relacion Físico sin Normalizar
+
+<p align="center">
+  <img src="assets/Chapter-4/Diagrama_fisico_sin_Normalizar.png" alt="Diagrama Entidad-Relacion Físico sin Normalizar de SolarPulse IoT" width="800px">
+</p>
+
+Presentación del Diagrama Físico Normalizado
+En esta sección se presenta el Diagrama Físico Normalizado, elaborado a partir del modelo previamente definido y aplicando los principios de normalización de bases de datos.
+La normalización permite organizar la información de manera estructurada, reduciendo la redundancia de datos y evitando problemas relacionados con la inserción, actualización y eliminación de información.
+A partir del modelo sin normalizar, se identifican y separan los datos que corresponden a diferentes entidades, estableciendo las relaciones necesarias entre ellas mediante claves primarias y claves foráneas.
+El resultado es una estructura de base de datos más consistente y organizada, que facilita el almacenamiento, consulta y mantenimiento de la información.
+Este diagrama representa la estructura física propuesta para el sistema y sirve como referencia para una posterior implementación de las tablas y relaciones en un Sistema Gestor de Bases de Datos (SGBD).
+
+> **Artefacto:** Enfoque Entidad-Relacion Físico Normalizado
+
+<p align="center">
+  <img src="assets/Chapter-4/Diagrama_fisco_Normalizado.png" alt="Diagrama Entidad-Relacion Físico Normalizado de SolarPulse IoT" width="800px">
+</p>
+
+Objetivo de los Diagramas
+Los diagramas desarrollados tienen como finalidad representar progresivamente la estructura de la base de datos, partiendo de la información identificada en los requerimientos del sistema hasta llegar a una estructura organizada y preparada para su implementación.
+El proceso permite:
+* Identificar las entidades necesarias para el sistema.
+* Definir los atributos correspondientes a cada entidad.
+* Establecer las relaciones entre las diferentes entidades.
+* Identificar las claves primarias y claves foráneas.
+* Reducir la redundancia de información mediante la normalización.
+* Mantener la integridad y consistencia de los datos.
+* Facilitar la posterior implementación de la base de datos.
+
+<div style="page-break-before: always;"></div>
+
+
+# CONCLUSIONES
+
+- Validación basada en los segmentos objetivo: El diseño y especificación de requerimientos de la plataforma SolarPulse IoT se fundamentaron de manera rigurosa en el análisis de las entrevistas realizadas a los tres segmentos clave (gestores comerciales/industriales, familias residenciales y compradores potenciales). Esto garantizó que entidades como instalaciones, mediciones, alertas y mantenimientos respondan directamente a necesidades reales de monitoreo, auditoría financiera y respuesta ante fallas.
+- Normalización e integridad del modelo físico: La transición del modelo conceptual y lógico hacia el diagrama físico normalizado permitió eliminar la redundancia de datos y estructurar adecuadamente las relaciones mediante claves primarias y foráneas. Este proceso asegura la coherencia transaccional y la trazabilidad de operaciones críticas como la asignación de repuestos, órdenes de trabajo e historial de costos.
+
+Elección estratégica de Microsoft SQL Server: La selección de SQL Server como SGBD relacional proporcionó un motor adecuado para la ingesta masiva de telemetría IoT mediante particionamiento temporal e índices columnares, garantizando tiempos de respuesta eficientes para consultas analíticas y alineándose con los estándares técnicos y académicos del proyecto.
+
+
+
+<div style="page-break-before: always;"></div>
+
+
+# BIBLIOGRAFÍA
+
+- Wiley Online Library. (2025). Intelligent maintenance approaches for improving photovoltaic performance. Solar RRL. https://onlinelibrary.wiley.com/doi/full/10.1002/solr.202500289
+- SurgePV. (2026, mayo 3). Predictive maintenance solar 2026: AI, IoT & cost reduction. https://www.surgepv.com/blog/predictive-maintenance-solar
+- IEOM Society. (2025). A hybrid cost-optimized maintenance strategy for solar-wind systems. Proceedings of the International Conference on Industrial Engineering and Operations Management, París. https://ieomsociety.org/proceedings/paris2025/374.pdf 
+- DataIntelo. (2025). Solar performance monitoring market research report 2033. https://dataintelo.com/report/solar-performance-monitoring-market
+
+
+
+<div style="page-break-before: always;"></div>
+
+
+# ANEXOS
+
+- **Anexo 1. Registro del contenido audiovisual creados o implementados en el proyecto**
+
+| Sección | Características del video | Sobre el contenido | Integración y entrega |
+| ------- | ------------------------- | ------------------ | --------------------- |
+| Entrevistas | <li>Cantidad de videos: 3 <li>Nomenclatura: upc-pre-202610-1asi0787-15869-Heliosync_Technologie-needfinding-TP1.mp4 <li>Formato: .mp4 <li>Duración: 17 minutos y 20 segundos. | Se realizó la captura de contenido audiovisual para recopilar los datos o información pertinente necesaria para el desarrollo de nuestra solución de SolarPulse IoT, con la información conseguida de las entrevistas nuestros segmentos objetivos logramos definir y completar nuestra base de datos conforme a las necesidades y requisitos de los usuarios.| Subir el video en YouTube con enlace privado. Incluir en el informe screenshot del video con enlace al mismo. Incluir redacción de introducción a la sección y análisis de cada entrevista, así como el análisis general donde se identifican las variables y los valores representativos a nivel objetivo y subjetivo que servirán de base para la definición de los User Persona. |
+| About the team | <li> Cantidad de videos: 1 <li>Nomenclatura: upc-pre-202610-1asi0787-15869-Heliosync_Technologie-about-the-team-TP1 <li>Formato: .mp4 <li>Duración: En función al contenido (considerar 5 minutos para la sección de retrospectiva del grupo y 1 minuto por cada testimonio de miembro del equipo). | lorem ipsum | Subir el video en YouTube con enlace privado. Incluir redacción de introducción a la sección, resumiendo el proceso de trabajo y los logros alcanzados por los miembros del equipo |
+| Expo TP1 | <li> Cantidad de videos: 1 <li>Nomenclatura: upc-pre-202610-1asi0787-15869-Heliosync_Technologie-expo-TP1 <li>Formato: .mp4 <li>Duración: La duración máxima del video es de 20 minutos. | lorem ipsum | Subir el video en YouTube con enlace privado. |
+
+- **Anexo 2. Visualización de los proyectos realizados en GitHub que se van a utilizar.**
+
+Link del reporte: [Reporte](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Report)
+
+Imagen referencial: 
+
+![ScreenShot_Repositorio_Reporte](assets/Chapter-4/Diagrama_fisico_sin_Normalizar.png)
+
+Link del reporte: [Diagramas ERD](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Diagram_DataBase)
+
+Imagen referencial:
+
+![ScreenShot_Repositorio_DiagramaERD](assets/Chapter-4/Diagrama_fisco_Normalizado.png)
+
+
 
 
