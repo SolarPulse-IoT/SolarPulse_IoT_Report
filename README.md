@@ -31,7 +31,6 @@
 | U20241B647 | Quispe Vargas Juan Carlos             |
 | U202410464 | Martínez Zeta José Alonso             |
 | U20221A006 | Soto Vásquez, María Fernanda          |
-| U202313231 | Flores Masias, Adriel Jose            |
 
 </div>
 
@@ -58,7 +57,22 @@
                     <li>Juan Carlo, Quispe Vargas</li>
                     <li>José Alonso, Martínez Zeta</li>
                     <li>María Fernanda, Soto Vásquez</li>
-                    <li>Adriel Jose, Flores Masias</li>
+                    </ul>
+                  </td>
+                  <td>Se realizaron las correcciones pertinentes de nuestros diagramas para realizar las exportaciones a los sistema de gestión de bases de datos relacional (SQL) y no relacional (NoSQL). Posteriormente se haces las consultas y los diagramas en el sistema de MSSQL y Mongodb para poder evaluar los pro y contras que tiene cada sistema al momento de manejar nuestros datos.</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                  <td rowspan="5" style="text-align: center; vertical-align: middle;"><b>TF1</b></td>
+                  <td style="vertical-align: middle;">14/09/2026</td>
+                  <td>
+                    <ul style="margin: 0; padding-left: 30px;">
+                    <li>Renzo Jesus, Navarro Flores</li>
+                    <li>Miguel Alejandro, Bravo Catillo Rojo</li>
+                    <li>Juan Carlo, Quispe Vargas</li>
+                    <li>José Alonso, Martínez Zeta</li>
+                    <li>María Fernanda, Soto Vásquez</li>
                     </ul>
                   </td>
                   <td>Desarrollo de nuestro diseño complementario de la base de datos de SolarPulse IoT en base a las entrevistas obtenidas, se plantea el diseño del diagrama de entidad-relación lógico, diagrama de entidad-relación físico y se determina que software de base de datos vamos a usar.</td>
@@ -86,31 +100,43 @@ Para el Trabajo Parcial, el equipo de SolarPulse IoT organizó la elaboración d
 - [Tabla de contenidos](#tabla-de-contenido)
 - [Student outcome](#student-outcome)
 - [CAPÍTULO I: INTRODUCCIÓN](#capítulo-i-introducción)
-  - [Startup profile](#11-startup-profile)
-    - [Descripción de startup](#111-descripción-de-startup)
-    - [Perfiles de integrantes del grupo](#112-perfiles-de-integrantes-del-grupo)
-  - [Solution Profile](#12-solution-profile)
-    - [Antecedentes y problemáticas](#121-antecedentes-y-problemáticas)
-    - [Propuestas de valor](#122-propuestas-de-valor)
-  - [Segmentos objetivo](#13-segmentos-objetivo)
+  - [1.1. Startup profile](#11-startup-profile)
+    - [1.1.1. Descripción de startup](#111-descripción-de-startup)
+    - [1.1.2. Perfiles de integrantes del grupo](#112-perfiles-de-integrantes-del-grupo)
+  - [1.2. Solution Profile](#12-solution-profile)
+    - [1.2.1. Antecedentes y problemáticas](#121-antecedentes-y-problemáticas)
+    - [1.2.2. Propuestas de valor](#122-propuestas-de-valor)
+  - [1.3. Segmentos objetivo](#13-segmentos-objetivo)
 - [CAPÍTULO II: RECOPILACIÓN Y ANÁLISIS DE REQUISITOS](#)
-  - [Entrevistas](#21-entrevistas)
-    - [Diseño de entrevistas](#211-diseño-de-entrevistas)
-    - [Registro de entrevistas](#212-registro-de-entrevistas)
-    - [Análisis de entrevistas](#213-análisis-de-entrevistas)
-  - [Requisitos](#22-requisitos)
-    - [Requisitos funcionales](#requisitos-funcionales)
-    - [Requisitos No funcionales](#requisitos-no-funcionales)
+  - [2.1. Entrevistas](#21-entrevistas)
+    - [2.1.1 Diseño de entrevistas](#211-diseño-de-entrevistas)
+    - [2.1.2. Registro de entrevistas](#212-registro-de-entrevistas)
+    - [2.1.3. Análisis de entrevistas](#213-análisis-de-entrevistas)
+  - [2.2. Requisitos](#22-requisitos)
+    - [2.2.1. Requisitos funcionales](#requisitos-funcionales)
+    - [2.2.2. Requisitos No funcionales](#requisitos-no-funcionales)
 - [CAPÍTULO III: DISEÑO DE BASE DE DATOS](#capítulo-iii-diseño-de-base-de-datos)
-  - [Entidades](#31-entidades)
-  - [Atributos](#32-atributos)
-  - [Enfoque relacional](#33-enfoque-relacional)
-    - [Diagrama entidad-relación lógico](#331-diagrama-entidad-relación-lógico)
+  - [3.1. Entidades](#31-entidades)
+  - [3.2. Atributos](#32-atributos)
+  - [3.3. Enfoque relacional](#33-enfoque-relacional)
+    - [3.3.1 Diagrama entidad-relación lógico](#331-diagrama-entidad-relación-lógico)
+  - [3.4. Enfoque no realacional](#34-enfoque-relacional)
+    - [3.4.1. Colecciones]()
+    - [3.4.2. Validación de esquema]()
+    - [3.4.3. Patrones de modelo de datos]()
 - [CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS](#capítulo-iv-implementación-de-base-de-datos)
-  - [Sistemas de gestión de base de datos](#41-sistemas-de-gestión-de-base-de-datos)
-    - [Evaluación y elección del sistema de gestión de base de datos relacional](#411-evaluación-y-elección-del-sistema-de-gestión-de-base-de-datos-relacional)
-  - [Diagramas de datos](#42-diagramas-de-datos)
-    - [Diagrama entidad-relación físico](#421-diagrama-entidad-relación-físico)
+  - [4.1. Sistemas de gestión de base de datos](#41-sistemas-de-gestión-de-base-de-datos)
+    - [4.1.1. Evaluación y elección del sistema de gestión de base de datos relacional](#411-evaluación-y-elección-del-sistema-de-gestión-de-base-de-datos-relacional)
+    - [4.1.2. Evaluación y elección del sistema de gestión de base de datos no relacional]()
+  - [4.2. Diagramas de datos](#42-diagramas-de-datos)
+    - [4.2.1. Diagrama entidad-relación físico](#421-diagrama-entidad-relación-físico)
+    - [4.2.2. Diagrama de documentos]()
+  - [4.3. Scripts de creación de la base de datos]()
+    - [4.3.1. Scripts de creación y carga de datos de la base de datos relacional]()
+    - [4.3.2. Scripts de creación y carga de datos de la base de datos no relacional]()
+  - [4.4. Consultas]()
+    - [4.4.1. Consultas para la base de datos relacional]()
+    - [4.4.2. Consultas para la base de datos no relacional]()
 - [Conclusiones](#conclusiones)
 - [BIBLIOGRAFÍA](#bibliografía)
 - [ANEXOS](#anexos)
