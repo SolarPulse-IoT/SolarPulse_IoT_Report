@@ -59,7 +59,8 @@
                     <li>María Fernanda, Soto Vásquez</li>
                     </ul>
                   </td>
-                  <td>Se realizaron las correcciones pertinentes de nuestros diagramas para realizar las exportaciones a los sistema de gestión de bases de datos relacional (SQL) y no relacional (NoSQL). Posteriormente se haces las consultas y los diagramas en el sistema de MSSQL y Mongodb para poder evaluar los pro y contras que tiene cada sistema al momento de manejar nuestros datos.</td>
+                  <td>Desarrollo de nuestro diseño complementario de la base de datos de SolarPulse IoT en base a las entrevistas obtenidas, se plantea el diseño del diagrama de entidad-relación lógico, diagrama de entidad-relación físico y se determina que software de base de datos vamos a usar.
+                  </td>
             </tr>
         </tbody>
         <tbody>
@@ -75,7 +76,7 @@
                     <li>María Fernanda, Soto Vásquez</li>
                     </ul>
                   </td>
-                  <td>Desarrollo de nuestro diseño complementario de la base de datos de SolarPulse IoT en base a las entrevistas obtenidas, se plantea el diseño del diagrama de entidad-relación lógico, diagrama de entidad-relación físico y se determina que software de base de datos vamos a usar.</td>
+                  <td>Se realizaron las correcciones pertinentes de nuestros diagramas para realizar las exportaciones a los sistema de gestión de bases de datos relacional (SQL) y no relacional (NoSQL). Posteriormente se haces las consultas y los diagramas en el sistema de MSSQL y Mongodb para poder evaluar los pro y contras que tiene cada sistema al momento de manejar nuestros datos.</td>
             </tr>
         </tbody>
     </thead>
@@ -91,6 +92,12 @@
 **Descripción de la colaboración en la elaboración del informe:**
 
 Para el Trabajo Parcial, el equipo de SolarPulse IoT organizó la elaboración del informe mediante la asignación de tareas a cada integrante, distribuidas por capítulos y apartados. Se coordinaron los avances, se identificaron contenidos pendientes y se acordaron ajustes en las entrevistas, Requisitos funcional y no funcionales, diseños dos diagramas de bases de datos en .erd y diseñar del modelado fisico llevado SQL Server. Asimismo, se asignó la preparación de la carátula, el índice y la estructura del Student Outcome en el documento Markdown. Esta distribución de responsabilidades facilitó el seguimiento de las tareas y la integración de los aportes del equipo para la entrega.
+
+### TF1
+
+**Descripción de la colaboración en la elaboración del informe:**
+
+Para el Trabajo Final, el equipo de SolarPulse IoT distribuyó la elaboración del informe según las secciones de diseño e implementación de las bases de datos relacional y no relacional. La colaboración incluyó la revisión de los modelos físico y documental, la validación de tablas y colecciones, la integración de los patrones de modelado y la organización de los scripts de creación en el documento Markdown. Además, los integrantes coordinaron la documentación de evidencias, diagramas, pruebas de integridad y rendimiento, así como la revisión final de la estructura y el contenido para asegurar su coherencia.
 
 <div style="page-break-before: always;"></div>
 
@@ -121,9 +128,9 @@ Para el Trabajo Parcial, el equipo de SolarPulse IoT organizó la elaboración d
   - [3.3. Enfoque relacional](#33-enfoque-relacional)
     - [3.3.1 Diagrama entidad-relación lógico](#331-diagrama-entidad-relación-lógico)
   - [3.4. Enfoque no realacional](#34-enfoque-relacional)
-    - [3.4.1. Colecciones]()
-    - [3.4.2. Validación de esquema]()
-    - [3.4.3. Patrones de modelo de datos]()
+    - [3.4.1. Colecciones](#341-colecciones)
+    - [3.4.2. Validación de esquema](#342-validacion-de-esquema)
+    - [3.4.3. Patrones de modelo de datos](#343-patrones-de-modelado-de-datos)
 - [CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS](#capítulo-iv-implementación-de-base-de-datos)
   - [4.1. Sistemas de gestión de base de datos](#41-sistemas-de-gestión-de-base-de-datos)
     - [4.1.1. Evaluación y elección del sistema de gestión de base de datos relacional](#411-evaluación-y-elección-del-sistema-de-gestión-de-base-de-datos-relacional)
@@ -156,8 +163,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
-| 7.c1. Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de ingeniería de software. | **Navarro Flores, Renzo Jesus**<br>**TP1:** Lideró la estructuración integral de la documentación del proyecto, garantizando el cumplimiento de los estándares académicos y normativos de tipografía, gramática y formato. Asimismo, desarrolló el Capítulo IV relativo a la implementación del sistema gestor de bases de datos, así como la consolidación de las conclusiones, referencias bibliográficas bajo norma APA y la gestión de anexos técnicos.<br><br>**Miguel Alejandro, Bravo Catillo Rojo**<br>**TP1:** Diseñó el Capítulo III correspondiente a la arquitectura de datos, definiendo el catálogo formal de entidades y atributos. Modeló el enfoque relacional del sistema y diseñó el Diagrama Entidad-Relación conceptual basándose en el análisis y extracción sistemática de requerimientos derivados de las entrevistas de campo.<br><br>**Juan Carlo, Quispe Vargas**<br>**TP1:** Desarrolló la sección Startup Profile, formulando la visión, misión y propuesta de valor de la organización. Adicionalmente, estructuró los perfiles profesionales de los integrantes del equipo de ingeniería y elaboró la matriz de trazabilidad del Student Outcome.<br><br>**José Alonso, Martínez Zeta**<br>**TP1:** Elaboró la sección Solution Profile, analizando los antecedentes y la problemática del sector mediante el marco W6H. Diseñó las hipótesis de negocio a través del Lean UX Canvas y especificó la matriz de Requisitos No Funcionales garantizando atributos de calidad en escalabilidad, disponibilidad y tiempo de respuesta.<br><br>**María Fernanda, Soto Vásquez**<br>**TP1:** Estructuró el marco de recopilación de requisitos, consolidando el registro formal y el análisis cualitativo de las entrevistas aplicadas. A partir de ello, definió y categorizó la especificación formal de Requisitos Funcionales (Historias de Usuario) vinculados a sus entidades dominio.<br><br>**Adriel Jose, Flores Masias**<br>**TP1:** Diseñó e implementó la estrategia de campo para el levantamiento de información en los segmentos objetivo. Planificó la batería de preguntas de las entrevistas y coordinó la producción audiovisual y empaquetado del material de exposición validado para el informe final. | **TP1:** El equipo demostró una sólida integración de los fundamentos de la ingeniería de software al abordar de manera integral el análisis, modelado y diseño de la solución para SolarPulse IoT durante la entrega TP1. Asimismo, la rigurosa validación de requisitos, el cumplimiento de las normativas del informe y la correcta estructuración conceptual, lógica y relacional de la arquitectura de datos garantizan una base técnica de alto nivel académico y alineada con las mejores prácticas del sector. |
-| 7.c2. Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de tecnologías de ingeniería de software. | **Navarro Flores, Renzo Jesus**<br>**TP1:** Comprendí la importancia de la mejora continua al estructurar integralmente el proyecto, asegurando la calidad y el rigor técnico en la documentación y en la validación del capítulo final.<br><br>**Miguel Alejandro, Bravo Catillo Rojo**<br>**TP1:** Asumí el reto de investigar y profundizar en el diseño conceptual y relacional de bases de datos, reconociendo la necesidad de actualizar mis competencias para modelar requerimientos complejos.<br><br>**Juan Carlo, Quispe Vargas**<br>**TP1:** Valoré la necesidad del aprendizaje autónomo al investigar a fondo la definición de perfiles de startup y modelos de negocio tecnológicos aplicados a la ingeniería.<br><br>**José Alonso, Martínez Zeta**<br>**TP1:** Identifiqué la importancia de mantenerme actualizado en metodologías de diseño y análisis de requerimientos no funcionales para asegurar la viabilidad de la solución.<br><br>**María Fernanda, Soto Vásquez**<br>**TP1:** Desarrollé habilidades de análisis crítico al estructurar el levantamiento y procesamiento de entrevistas, reconociendo el valor del aprendizaje continuo en la ingeniería de requisitos. <br><br>**Adriel Jose, Flores Masias**<br>**TP1:** Comprendí la necesidad de adaptabilidad y búsqueda constante de información técnica para validar perfiles de usuario y diseñar presentaciones efectivas. | **TP1:** A través del trabajo colaborativo en el TP1, los integrantes reconocieron y ejercitaron el aprendizaje autónomo al investigar y profundizar en metodologías Lean UX, perfiles de negocio y modelado relacional de datos aplicados a la solución. |
+| 7.c1. Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de ingeniería de software. | **Navarro Flores, Renzo Jesus**<br>**TP1:** Lideró la estructuración integral de la documentación del proyecto, garantizando el cumplimiento de los estándares académicos y normativos de tipografía, gramática y formato. Asimismo, desarrolló el Capítulo IV relativo a la implementación del sistema gestor de bases de datos, así como la consolidación de las conclusiones, referencias bibliográficas bajo norma APA y la gestión de anexos técnicos.<br><br>**TF1:** Lideró la implementación y validación de la base de datos relacional en Microsoft SQL Server, asegurando la creación de las 25 tablas, vistas y restricciones de integridad. Asimismo, elaboró las consultas analíticas en T-SQL y redactó las conclusiones del informe.<br><br>**Bravo Castillo Rojo, Miguel Alejandro**<br>**TP1:** Diseñó el Capítulo III correspondiente a la arquitectura de datos, definiendo el catálogo formal de entidades y atributos. Modeló el enfoque relacional del sistema y diseñó el Diagrama Entidad-Relación conceptual basándose en el análisis y extracción sistemática de requerimientos derivados de las entrevistas de campo.<br><br>**TF1:** Refinó el Diagrama Entidad-Relación físico normalizado y sin normalizar. Diseñó la arquitectura de documentos en MongoDB, estableciendo la matriz de 14 colecciones y los patrones de modelado de datos (Embedding, Referencing, Extended Reference y Subset).<br><br>**Quispe Vargas, Juan Carlos**<br>**TP1:** Desarrolló la sección Startup Profile, formulando la visión, misión y propuesta de valor de la organización. Adicionalmente, estructuró los perfiles profesionales de los integrantes del equipo de ingeniería y elaboró la matriz de trazabilidad del Student Outcome.<br><br>**TF1:** Desarrolló la evaluación técnica y comparativa entre los sistemas gestores de bases de datos relacionales (SQL Server, PostgreSQL, MySQL) y no relacionales (MongoDB, Cassandra, DynamoDB), justificando las decisiones de arquitectura.<br><br>**Martínez Zeta, José Alonso**<br>**TP1:** Elaboró la sección Solution Profile, analizando los antecedentes y la problemática del sector mediante el marco W6H. Diseñó las hipótesis de negocio a través del Lean UX Canvas y especificó la matriz de Requisitos No Funcionales garantizando atributos de calidad en escalabilidad, disponibilidad y tiempo de respuesta.<br><br>**TF1:** Implementó las reglas de validación de esquema ($jsonSchema) en MongoDB con nivel de validación estricto y coordinó las pruebas de consistencia de información entre el modelo relacional y el no relacional.<br><br>**Soto Vásquez, María Fernanda**<br>**TP1:** Estructuró el marco de recopilación de requisitos, consolidando el registro formal y el análisis cualitativo de las entrevistas aplicadas. A partir de ello, definió y categorizó la especificación formal de Requisitos Funcionales (Historias de Usuario) vinculados a sus entidades dominio.<br><br>**TF1:** Construyó y ejecutó las consultas complejas y pipelines de agregación en MongoDB, además de elaborar el diagrama de documentos y la tabla de correspondencia entre el modelo relacional y NoSQL.<br><br>**Adriel Jose, Flores Masias**<br>**TP1:** Diseñó e implementó la estrategia de campo para el levantamiento de información en los segmentos objetivo. Planificó la batería de preguntas de las entrevistas y coordinó la producción audiovisual y empaquetado del material de exposición validado para el informe final. | **TP1:** El equipo demostró una sólida integración de los fundamentos de la ingeniería de software al abordar de manera integral el análisis, modelado y diseño de la solución para SolarPulse IoT durante la entrega TP1. Asimismo, la rigurosa validación de requisitos, el cumplimiento de las normativas del informe y la correcta estructuración conceptual, lógica y relacional de la arquitectura de datos garantizan una base técnica de alto nivel académico y alineada con las mejores prácticas del sector.<br><br>**TF1:** El equipo demostró un dominio avanzado en la implementación práctica y comparativa de soluciones de almacenamiento de datos tanto relacionales (MSSQL) como no relacionales (MongoDB). La correcta aplicación de patrones de diseño NoSQL, la optimización de consultas complejas y la rigurosa validación de esquemas consolidan una arquitectura robusta y escalable para la telemetría y gestión de SolarPulse IoT. |
+| 7.c2. Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de tecnologías de ingeniería de software. | **Navarro Flores, Renzo Jesus**<br>**TP1:** Comprendí la importancia de la mejora continua al estructurar integralmente el proyecto, asegurando la calidad y el rigor técnico en la documentación y en la validación del capítulo final.<br><br>**TF1:** Profundicé en la optimización de scripts DDL y DML en SQL Server, aprendiendo a estructurar consultas complejas en T-SQL para auditar el rendimiento del sistema.<br><br>**Bravo Castillo Rojo, Miguel Alejandro**<br>**TP1:** Asumí el reto de investigar y profundizar en el diseño conceptual y relacional de bases de datos, reconociendo la necesidad de actualizar mis competencias para modelar requerimientos complejos.<br><br>**TF1:** Investigué los patrones avanzados de modelado documental en MongoDB, comprendiendo cómo transformar esquemas relacionales a estructuras BSON eficientes.<br><br>**Quispe Vargas, Juan Carlos**<br>**TP1:** Valoré la necesidad del aprendizaje autónomo al investigar a fondo la definición de perfiles de startup y modelos de negocio tecnológicos aplicados a la ingeniería.<br><br>**TF1:** Analicé los criterios de evaluación de SGBD en el mercado actual, fortaleciendo mi capacidad de tomar decisiones tecnológicas fundamentadas en costo y rendimiento.<br><br>**Martínez Zeta, José Alonso**<br>**TP1:** Identifiqué la importancia de mantenerme actualizado en metodologías de diseño y análisis de requerimientos no funcionales para asegurar la viabilidad de la solución.<br><br>**TF1:** Aprendí a implementar gobernanza e integridad de datos en bases de datos NoSQL mediante la aplicación estricta de reglas $jsonSchema.<br><br>**Soto Vásquez, María Fernanda**<br>**TP1:** Desarrollé habilidades de análisis crítico al estructurar el levantamiento y procesamiento de entrevistas, reconociendo el valor del aprendizaje continuo en la ingeniería de requisitos.<br><br>**TF1:** Adquirí conocimientos en el uso del framework de agregación de MongoDB para procesar métricas en tiempo real y diseñar la representación de documentos.<br><br>**Adriel Jose, Flores Masias**<br>**TP1:** Comprendí la necesidad de adaptabilidad y búsqueda constante de información técnica para validar perfiles de usuario y diseñar presentaciones efectivas. | **TP1:** A través del trabajo colaborativo en el TP1, los integrantes reconocieron y ejercitaron el aprendizaje autónomo al investigar y profundizar en metodologías Lean UX, perfiles de negocio y modelado relacional de datos aplicados a la solución.<br><br>**TF1:** Durante el hito TF1, el grupo asumió con éxito el aprendizaje autónomo de tecnologías NoSQL (MongoDB) y la profundización en SQL Server. Esta experiencia permitió al equipo comparar ambos paradigmas, entender sus escenarios de aplicación y adoptar mejores prácticas de diseño documental e integridad transaccional. |
 
 <div style="page-break-before: always;"></div>
 
@@ -976,6 +983,207 @@ El diagrama de entidad-relación lógico constituye la representación estructur
 
 <div style="page-break-before: always;"></div>
 
+## 3.4 Enfoque no relacional
+
+Mientras que el modelo relacional implementado en Microsoft SQL Server estructura la información mediante 25 tablas normalizadas para garantizar la integridad referencial y eliminar la redundancia, el enfoque no relacional (NoSQL) de SolarPulse IoT adopta un paradigma orientado a documentos en formato BSON (Binary JSON) sobre MongoDB. En esta arquitectura, el diseño del esquema se rige por los patrones de acceso de la aplicación: las entidades que se consultan, visualizan o actualizan de manera conjunta en los tableros de monitoreo y en las operaciones de mantenimiento de campo se consolidan dentro de una misma estructura documental.
+De esta manera, las 25 tablas del diagrama físico normalizado se reorganizan estratégicamente en 14 colecciones. Las 11 tablas restantes (Permiso, Rol_Permiso, Tecnico, Especialidad, Tecnico_Especialidad, Distribuidora, Panel_Solar, Sensor_iot, Actividad_mantenimiento, Detalle_presupuesto y Costo_mantenimiento) se integran como subdocumentos o arreglos embebidos dentro de sus colecciones principales, logrando tres objetivos técnicos clave:
+- **Ingesta masiva de telemetría IoT (RNF-3 y RNF-4):** Permite absorber más de 1,000 lecturas por segundo y escalar ante un crecimiento anual del 100% agrupando las series temporales en cubetas horarias y diarias.
+- **Lecturas operativas sin uniones costosas (RNF-5 y RNF-10):** Reduce las consultas que en SQL requieren hasta 6 operaciones JOIN consecutivas a una sola lectura directa de documento en menos de 3 segundos.
+- **Gobernanza e integridad documental (RNF-2 y VE-08):** A pesar de su flexibilidad para admitir sensores multimarca (RNF-6), cada colección aplica reglas estrictas de validación mediante $jsonSchema (tipos BSON, campos obligatorios, rangos numéricos y enumeraciones de estado), manteniendo coherencia total con la base de datos relacional (VE-11).
+
+### 3.4.1. Colecciones 
+
+En el diseño del componente no relacional de SolarPulse IoT, la información se organiza a través de 14 colecciones de documentos BSON que consolidan las 25 tablas del modelo relacional. Esta agrupación lógica elimina las tablas puente de relaciones muchos a muchos (Rol_Permiso y Tecnico_Especialidad) y anida las entidades dependientes dentro de sus documentos raíz.
+A continuación, se presenta la matriz completa de las 14 colecciones implementadas e importadas en MongoDB, detallando qué tablas relacionales absorben y cómo estructuran sus subdocumentos:
+
+| N° | Colección en MongoDB | Tablas SQL Equivalentes | Descripción de la Estructura Documental | Patrones Aplicados |
+|---|---|---|---|---|
+| 1 | roles | Rol, Permiso, Rol_Permiso | Almacena cada perfil de acceso (Administrador, Tecnico, ClienteFinal) e incluye el arreglo embebido permisos: [{ codigo, descripcion }]. | Embedding |
+| 2 | usuarios | Usuario, Tecnico, Especialidad, Tecnico_Especialidad | Gestiona las cuentas y credenciales. Embebe la referencia extendida rol: { rol_id, nombre_rol }, referencia a cliente_id e incorpora el subdocumento opcional perfil_tecnico con su arreglo especialidades: [...] solo para usuarios de soporte. | Embedding, Extended Reference, Referencing. |
+| 3 | clientes | Cliente | Catálogo maestro de propietarios residenciales y corporativos (razon_social, tipo_documento, nro_documento, direccion_fiscal, contacto). | Referencing |
+| 4 | tarifas | Tarifa_electrica, Distribuidora | Registra los pliegos tarifarios (BT5A, BT5B), el costo_kwh en Decimal128 y embebe el subdocumento distribuidora: { nombre } (Luz del Sur S.A.A., Enel Distribución Perú). | Embedding, Referencing |
+| 5 | factores_emision | Factor_emision | Almacena los coeficientes de conversión ambiental de la red (nombre_red, kg_co2_kwh, anio_vigencia) para el cálculo de huella de carbono. | Referencing |
+| 6 | modelos_panel | Modelo_panel | Catálogo técnico de módulos fotovoltaicos homologados con marca, modelo y potencia_nominal_w. | Referencing |
+| 7 | repuestos | Repuesto | Inventario de componentes y materiales (codigo_sku, nombre, stock_actual, costo_unitario_estandar) con control de stock independiente. | Referencing |
+| 8 | instalaciones | Instalacion, Panel_Solar, Sensor_iot | Documento central del sistema. Incluye coordenadas GeoJSON (ubicacion), referencias extendidas a cliente, tarifa y factor_emision, el arreglo anidado paneles[] (con modelo y sensores[]), el arreglo alertas_recientes[] (últimas 5) y resumen. | Embedding, Extended Reference, Subset |
+| 9 | mediciones | Medicion | Agrupa las lecturas de telemetría por sensor y ventana horaria (lecturas[]), manteniendo referencias (sensor_id, panel_id, instalacion_id) y métricas precalculadas en resumen. | Referencing |
+| 10 | consumos_energia | Consumo_energia | Agrupa los intervalos de demanda eléctrica (cada 15 min) por instalación y por día en el arreglo registros[], junto con el total diario en resumen. | Referencing |
+| 11 | anomalias | Anomalia | Registra desviaciones térmicas o eléctricas (Hotspot, Sombreado, Degradacion, Circuito abierto) con referencias directas a sensor_id, panel_id e instalacion_id. | Referencing, Extended Reference |
+| 12 | alertas | Alerta | Historial completo de notificaciones enviadas (WhatsApp, Correo, SMS, Push) en lenguaje no técnico, incluyendo referencias extendidas a anomalia e instalacion. | Referencing, Extended Reference |
+| 13 | incidencias | Incidencia | Tickets operativos abiertos ante fallas que registran tiempo_inactivo_min, perdida_estimada_pen, referencias a alerta_id y anomalia_id, y referencia extendida a instalacion. | Referencing, Extended Reference |
+| 14 | ordenes_mantenimiento | Orden_mantenimiento, Actividad_mantenimiento, Detalle_presupuesto, Costo_mantenimiento | Consolida la orden de trabajo con referencias extendidas a instalacion y tecnico, el arreglo de tareas actividades[], el arreglo presupuesto[] y el cierre contable en el subdocumento costo. | Embedding, Referencing, Extended Reference |
+
+
+### 3.4.2. Validacion de esquema
+
+En esta sección se presentan las validaciones del esquema de las bases de datos relacional y no relacional implementadas en SQL Server y MongoDB, respectivamente. Mientras que SQL Server aplica restricciones declarativas mediante cláusulas PRIMARY KEY, FOREIGN KEY, UNIQUE y DEFAULT sobre sus 25 tablas, MongoDB garantiza la calidad estructural de sus 14 colecciones mediante validadores nativos $jsonSchema con nivel validationLevel: "strict" y acción validationAction: "error", rechazando cualquier inserción o actualización que incumpla los tipos BSON, campos obligatorios (required) o dominios de valores (enum).
+
+| Código | Base de datos | Validación | Regla / Mecanismo Técnico Aplicado | Resultado esperado |
+|---|---|---|---|---|
+| VE-01 | SQL Server | Existencia de tablas | Ejecución de los 25 bloques CREATE TABLE y la vista vw_Incidencia_Instalacion en SolarPulseIoT. | 25 tablas y 1 vista creadas correctamente. |
+| VE-02 | MongoDB | Existencia de colecciones | Ejecución de db.createCollection() para las 14 colecciones del modelo documental. | 14 colecciones creadas correctamente. |
+| VE-03 | SQL Server | Tipos de datos y columnas | Uso de DECIMAL(12,2) para costos, DATETIME2(3) para telemetría y NVARCHAR para cadenas Unicode. | Estructura conforme al modelo físico. |
+| VE-04 | MongoDB | Estructura de documentos | Uso de bsonType: "decimal" (Decimal128) para moneda/energía, "date" para marcas temporales, "object" y "array". | Campos y tipos BSON correctos. |
+| VE-05 | SQL Server | Claves primarias y foráneas | 25 restricciones PK_ (IDENTITY y compuestas) y 26 restricciones FK_ con integridad referencial. | Relaciones correctamente definidas. |
+| VE-06 | MongoDB | Identificadores y referencias | Validación de bsonType: "objectId" en _id y en campos de referencia (instalacion_id, alerta_id, anomalia_id). | Documentos identificados correctamente. |
+| VE-07 | SQL Server | Restricciones UNIQUE y DEFAULT | Restricciones UQ_ simples (email, nro_documento, codigo_sku, mac_address) y compuestas (marca+modelo, orden+repuesto). | Reglas de integridad aplicadas. |
+| VE-08 | MongoDB | Validación mediante JSON Schema | Reglas $jsonSchema con required, enum (estados, severidades, prioridades), minimum y maxItems (60 en mediciones, 5 en Subset). | Documentos que cumplen el esquema. |
+| VE-09 | SQL Server | Integridad referencial | Bloqueo de registros huérfanos mediante FOREIGN KEY ... ON DELETE NO ACTION. | Sin referencias inválidas. |
+| VE-10 | MongoDB | Integridad de referencias | Correspondencia exacta de ObjectId entre catálogos maestros, instalaciones, cadena de fallas y órdenes de trabajo. | Referencias existentes en otras colecciones. |
+| VE-11 | Ambas | Consistencia de información | Carga de los mismos casos de estudio derivados de las entrevistas (Planta VES, Residencia Salazar, Katia, Técnico TEC-001). | Datos coherentes entre plataformas. |
+| VE-12 | Ambas | Rendimiento de consultas | Comparativa de planes de ejecución con índices no agrupados (INCLUDE) en SQL Server e índices compuestos/2dsphere en MongoDB. | Consultas ejecutadas y tiempos registrados (< 3 s). |
+
+### 3.4.3. Patrones de modelado de datos 
+
+A diferencia del enfoque relacional, cuyo diseño se rige por las formas normales para eliminar la duplicidad de datos, en una base de datos documental como MongoDB el esquema se modela en función de cómo la aplicación consulta y actualiza la información: qué entidades se visualizan juntas en pantalla, cuál es su cardinalidad y qué colecciones crecen de forma continua. Para SolarPulse IoT, la transformación de las 25 tablas relacionales en 14 colecciones documentales se fundamenta principalmente en cuatro patrones estructurales (Embedding, Referencing, Extended Reference y Subset), complementados por patrones de series de tiempo y cálculo previo para satisfacer las historias de usuario (US-01 a US-15) y los atributos de calidad (RNF-1 a RNF-10).
+
+**Tabla 1. Patrones de modelado de datos aplicados en SolarPulse IoT**
+
+| Patrón principal | Problema que resuelve | Aplicación específica en SolarPulse IoT | Requisitos asociados |
+|---|---|---|---|
+| 1. Embebido (Embedding) | Entidades con relación 1:1 o 1:pocos que siempre se consultan o actualizan al mismo tiempo. | - Permisos[] dentro de roles.<br>- Distribuidora dentro de tarifas.<br>- Paneles[] y sensores[] dentro de instalaciones.<br>- Actividades[], presupuesto[] y costo dentro de ordenes_mantenimiento. | RNF-1, RNF-10, US-02, US-03, US-04, US-12 a US-15 |
+| 2. Referencia (Referencing) | Relaciones 1:muchos acotadas o ilimitadas y catálogos maestros compartidos que se actualizan de manera independiente. | - Vínculo mediante ObjectId desde mediciones, consumos_energia, anomalias, alertas, incidencias y ordenes_mantenimiento hacia instalaciones.<br>- Trazabilidad anomalia_id → alerta_id → incidencia_id.<br>- Colecciones maestras independientes (clientes, tarifas, factores_emision, modelos_panel, repuestos). | RNF-4, RNF-9, US-06 a US-10 |
+| 3. Referencia Extendida (Extended Reference) | Cuellos de botella por exceso de operaciones $lookup (equivalentes a JOIN) al consultar vistas operativas frecuentes. | - Copia del identificador junto con los atributos descriptivos inmutables o de baja mutabilidad en usuarios (rol), instalaciones (cliente, tarifa, factor_emision, paneles.modelo), alertas, incidencias y ordenes_mantenimiento (instalacion, tecnico, repuesto). | RNF-5, RNF-10, US-15 |
+| 4. Subconjunto (Subset) | Documentos principales sobrecargados por historiales extensos de los cuales la interfaz solo muestra los eventos más recientes. | - La colección instalaciones almacena únicamente el arreglo alertas_recientes[] limitado a las 5 últimas alertas para carga inmediata en el dashboard móvil, mientras que el historial completo reside en la colección alertas. | RNF-5, US-08 |
+
+#### a) Patrón de Documentos Embebidos (Embedding)
+
+- **Fundamento técnico:** Consiste en anidar objetos o arreglos de subdocumentos directamente dentro del documento padre cuando existe una relación de contenencia (1:1 o 1:pocos acotado) y ambos conjuntos de datos se consultan simultáneamente. Esto garantiza que una sola operación de lectura a disco recupere toda la entidad compuesta y que las actualizaciones múltiples ocurran de forma atómica a nivel de documento.
+- **Implementación en SolarPulse IoT:**
+
+```javascript
+// Ejemplo de Embedding en "ordenes_mantenimiento": actividades, presupuesto y costo anidados
+{
+  "_id": ObjectId("6740a1f0c3b5e2a1d4f00101"),
+  "tipo_mantenimiento": "Correctivo",
+  "fecha_programada": ISODate("2026-11-02T00:00:00Z"),
+  "fecha_ejecucion": ISODate("2026-11-02T00:00:00Z"),
+  "estado": "En progreso",
+  "actividades": [
+    {
+      "actividad_id": ObjectId("6740a1f0c3b5e2a1d4f00111"),
+      "descripcion_tarea": "Revisión térmica e inspección de cableado en celda afectada",
+      "tiempo_estimado_min": 60,
+      "tiempo_real_min": 50,
+      "resultado": "Exitosa",
+      "observaciones": "Se verificó el estado de la línea y se preparó el cambio de conectores."
+    }
+  ],
+  "presupuesto": [
+    {
+      "repuesto": {
+        "repuesto_id": ObjectId("6740a1f0c3b5e2a1d4f00092"),
+        "codigo_sku": "REP-CAB-10AWG",
+        "nombre": "Cable Solar fotovoltaico 10 AWG"
+      },
+      "cantidad": NumberDecimal("5.00"),
+      "precio_unitario": NumberDecimal("4.20"),
+      "subtotal": NumberDecimal("21.00")
+    }
+  ],
+  "costo": {
+    "costo_mano_obra": NumberDecimal("120.00"),
+    "costo_materiales_repuestos": NumberDecimal("21.00"),
+    "costo_adicional_viaticos": NumberDecimal("20.00"),
+    "costo_total": NumberDecimal("161.00"),
+    "moneda": "PEN",
+    "fecha_registro_costo": ISODate("2026-11-02T14:00:00Z")
+  }
+}
+```
+
+#### b) Patrón de Referencias (Referencing)
+
+- **Fundamento técnico:** Consiste en almacenar el identificador único (_id de tipo ObjectId) de un documento origen dentro de otro documento, de forma análoga a una clave foránea relacional. Se aplica obligatoriamente cuando la relación es 1:muchos de crecimiento continuo (evitando superar el límite físico de 16 MB por documento en BSON) o cuando una entidad maestra es compartida por múltiples documentos y sufre actualizaciones independientes.
+- **Implementación en SolarPulse IoT:**
+
+```javascript
+// Ejemplo de Referencing en "incidencias": trazabilidad hacia alerta, anomalía e instalación
+{
+  "_id": ObjectId("6740a1f0c3b5e2a1d4f00081"),
+  "alerta_id": ObjectId("6740a1f0c3b5e2a1d4f00074"),
+  "anomalia_id": ObjectId("6740a1f0c3b5e2a1d4f00064"),
+  "instalacion": {
+    "instalacion_id": ObjectId("6740a1f0c3b5e2a1d4f00011"),
+    "nombre": "Planta Industrial VES - Techo Norte"
+  },
+  "titulo": "Sobrecalentamiento (Hotspot) en Panel Techo Norte",
+  "descripcion_detallada": "El sensor IoT detectó una temperatura anómala de celda superior a 68°C con caída de rendimiento.",
+  "prioridad": "Alta",
+  "estado": "Abierta",
+  "fecha_apertura": ISODate("2026-11-01T10:05:00Z"),
+  "fecha_cierre": null,
+  "tiempo_inactivo_min": 45,
+  "perdida_estimada_pen": NumberDecimal("320.50")
+}
+```
+
+#### c) Patrón de Referencia Extendida (Extended Reference)
+
+- **Fundamento técnico:** Cuando se utiliza Referencing puro, mostrar una tabla o pantalla de resumen obliga al motor de base de datos a ejecutar múltiples etapas $lookup para recuperar nombres o códigos de otras colecciones. El patrón de Referencia Extendida resuelve este problema almacenando, junto al ObjectId de referencia, un subdocumento con los atributos descriptivos más consultados y de baja frecuencia de cambio del documento destino.
+- **Implementación en SolarPulse IoT:**
+
+```javascript
+// Ejemplo de Referencia Extendida en "alertas": incluye datos clave de anomalía e instalación
+{
+  "_id": ObjectId("6740a1f0c3b5e2a1d4f00074"),
+  "anomalia": {
+    "anomalia_id": ObjectId("6740a1f0c3b5e2a1d4f00064"),
+    "tipo_anomalia": "Hotspot",
+    "severidad": "Alta"
+  },
+  "instalacion": {
+    "instalacion_id": ObjectId("6740a1f0c3b5e2a1d4f00011"),
+    "nombre": "Planta Industrial VES - Techo Norte"
+  },
+  "fecha_generacion": ISODate("2026-11-01T10:01:00Z"),
+  "mensaje": "Se ha detectado un punto de calor elevado en el panel de la planta norte. Requiere revisión.",
+  "recomendacion": "Verificar la limpieza y libre sombra de la celda afectada.",
+  "canal_envio": "WhatsApp",
+  "estado": "No leida"
+}
+```
+
+#### d) Patrón de Subconjunto (Subset)
+
+- **Fundamento técnico:** Cuando una entidad principal tiene asociada una colección de eventos que crece indefinidamente (como miles de alertas a lo largo de los años), pero la interfaz de usuario del sistema solo muestra de forma inmediata la fracción más reciente, el patrón Subconjunto almacena una copia acotada de los últimos N elementos dentro del documento principal y conserva la totalidad histórica en una colección separada. Esto mantiene el documento de trabajo liviano en memoria RAM (Working Set) y evita lecturas secundarias en la carga inicial.
+- **Implementación en SolarPulse IoT:**
+
+```javascript
+// Actualización atómica del patrón Subset: inserta la nueva alerta y conserva solo las 5 más recientes
+db.instalaciones.updateOne(
+  { _id: ObjectId("6740a1f0c3b5e2a1d4f00011") },
+  {
+    $push: {
+      alertas_recientes: {
+        $each: [{
+          alerta_id: ObjectId("6740a1f0c3b5e2a1d4f00074"),
+          fecha_generacion: ISODate("2026-11-01T10:01:00Z"),
+          mensaje: "Se ha detectado un punto de calor elevado en el panel de la planta norte. Requiere revisión.",
+          estado: "No leida"
+        }],
+        $sort: { fecha_generacion: -1 },
+        $slice: 5
+      }
+    }
+  }
+);
+```
+
+### Anti-patrones evitados
+
+MongoDB también documenta antipatrones de diseño, es decir, prácticas que degradan el rendimiento, como los arreglos sin límite o la creación de un número excesivo de colecciones (MongoDB, Inc., s. f.-f, s. f.-g). La Tabla 3 resume cómo el modelo de SolarPulse IoT los evita.
+
+**Tabla 3. Anti-patrones de MongoDB evitados**
+
+| Anti-patrón | Cómo se evitó en el modelo |
+|---|---|
+| Arreglos sin límite | Las mediciones y consumos no se embeben en la instalación; las cubetas tienen máximo 60 lecturas (mediciones) o 96 registros (consumos) y alertas_recientes máximo 5 elementos. |
+| Documentos demasiado grandes (más de 16 MB) | Solo se embeben datos acotados (permisos, paneles, sensores, actividades, presupuesto); lo que crece con el tiempo va en su propia colección. |
+| Exceso de $lookup | Las referencias extendidas dejan en cada documento los datos que se muestran en pantalla. |
+| Demasiadas colecciones | Las 25 tablas relacionales se agrupan en 14 colecciones; las tablas intermedias Rol_Permiso y Tecnico_Especialidad desaparecen. |
+| Datos duplicados sin control | Solo se copian campos estables y se documenta cuándo deben actualizarse. |
+
 
 # CAPÍTULO IV: IMPLEMENTACIÓN DE BASE DE DATOS
 
@@ -1049,13 +1257,35 @@ El proceso permite:
 <div style="page-break-before: always;"></div>
 
 
+### 4.2.2. Diagrama de documentos
+
+
+## 4.3. Scripts de creación de la base de datos
+
+
+### 4.3.1. Scripts de creación y carga de datos de la base de datos relacional
+
+
+### 4.3.2. Scripts de creación y carga de datos de la base de datos no relacional
+
+
+## 4.4. Consultas
+
+
+### 4.4.1. Consultas para la base de datos relacional
+
+
+
+### 4.4.2. Consultas para la base de datos no relacional
+
+
+
 # CONCLUSIONES
 
 - Validación basada en los segmentos objetivo: El diseño y especificación de requerimientos de la plataforma SolarPulse IoT se fundamentaron de manera rigurosa en el análisis de las entrevistas realizadas a los tres segmentos clave (gestores comerciales/industriales, familias residenciales y compradores potenciales). Esto garantizó que entidades como instalaciones, mediciones, alertas y mantenimientos respondan directamente a necesidades reales de monitoreo, auditoría financiera y respuesta ante fallas.
 - Normalización e integridad del modelo físico: La transición del modelo conceptual y lógico hacia el diagrama físico normalizado permitió eliminar la redundancia de datos y estructurar adecuadamente las relaciones mediante claves primarias y foráneas. Este proceso asegura la coherencia transaccional y la trazabilidad de operaciones críticas como la asignación de repuestos, órdenes de trabajo e historial de costos.
 
 Elección estratégica de Microsoft SQL Server: La selección de SQL Server como SGBD relacional proporcionó un motor adecuado para la ingesta masiva de telemetría IoT mediante particionamiento temporal e índices columnares, garantizando tiempos de respuesta eficientes para consultas analíticas y alineándose con los estándares técnicos y académicos del proyecto.
-
 
 
 <div style="page-break-before: always;"></div>
@@ -1067,7 +1297,19 @@ Elección estratégica de Microsoft SQL Server: La selección de SQL Server como
 - SurgePV. (2026, mayo 3). Predictive maintenance solar 2026: AI, IoT & cost reduction. https://www.surgepv.com/blog/predictive-maintenance-solar
 - IEOM Society. (2025). A hybrid cost-optimized maintenance strategy for solar-wind systems. Proceedings of the International Conference on Industrial Engineering and Operations Management, París. https://ieomsociety.org/proceedings/paris2025/374.pdf 
 - DataIntelo. (2025). Solar performance monitoring market research report 2033. https://dataintelo.com/report/solar-performance-monitoring-market
-
+- Coupal, D. y Alger, K. W. (2019a, 14 de febrero). Building with patterns: The computed pattern. MongoDB Blog. https://www.mongodb.com/company/blog/building-with-patterns-the-computed-pattern
+- Coupal, D. y Alger, K. W. (2019b, 28 de febrero). Building with patterns: The subset pattern. MongoDB Blog. https://www.mongodb.com/company/blog/building-with-patterns-the-subset-pattern
+- Coupal, D. y Alger, K. W. (2019c, 7 de marzo). Building with patterns: The extended reference pattern. MongoDB Blog. https://www.mongodb.com/company/blog/building-with-patterns-the-extended-reference-pattern
+- Coupal, D. y Alger, K. W. (2019d, 26 de abril). Building with patterns: A summary. MongoDB Blog. https://www.mongodb.com/company/blog/building-with-patterns-a-summary
+- Coupal, D., Desmarets, P. y Hoberman, S. (2023). MongoDB data modeling and schema design. Technics Publications.
+- MongoDB, Inc. (s. f.-a). About time series data. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/core/timeseries/timeseries-bucketing/
+- MongoDB, Inc. (s. f.-b). Best practices for data modeling. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/data-modeling/concepts/embedding-vs-references/
+- MongoDB, Inc. (s. f.-c). Group data with the bucket pattern. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/data-modeling/design-patterns/group-data/bucket-pattern/
+- MongoDB, Inc. (s. f.-d). Model monetary data. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/tutorial/model-monetary-data/
+- MongoDB, Inc. (s. f.-e). MongoDB limits and thresholds. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/reference/limits/
+- MongoDB, Inc. (s. f.-f). Reduce the number of collections. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/data-modeling/design-antipatterns/reduce-collections/
+- MongoDB, Inc. (s. f.-g). Schema design anti-patterns. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/data-modeling/design-antipatterns/
+- MongoDB, Inc. (s. f.-h). Store polymorphic data. MongoDB Database Manual. Recuperado el 1 de noviembre de 2026, de https://www.mongodb.com/docs/manual/data-modeling/design-patterns/polymorphic-data/polymorphic-schema-pattern/
 
 
 <div style="page-break-before: always;"></div>
@@ -1090,7 +1332,7 @@ Imagen referencial:
 
 ![ScreenShot_Repositorio_Reporte](assets/Chapter-4/Reporte.png)
 
-Link de los Diagramas: [Diagramas ERD](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Diagram_DataBase)
+Link de los Diagramas: [Diagramas de modelado de base de datos](https://github.com/SolarPulse-IoT/SolarPulse_IoT_Diagram_DataBase)
 
 Imagen referencial:
 
