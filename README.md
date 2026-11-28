@@ -137,13 +137,13 @@ Para el Trabajo Final, el equipo de SolarPulse IoT distribuyó la elaboración d
     - [4.1.2. Evaluación y elección del sistema de gestión de base de datos no relacional]()
   - [4.2. Diagramas de datos](#42-diagramas-de-datos)
     - [4.2.1. Diagrama entidad-relación físico](#421-diagrama-entidad-relación-físico)
-    - [4.2.2. Diagrama de documentos]()
-  - [4.3. Scripts de creación de la base de datos]()
-    - [4.3.1. Scripts de creación y carga de datos de la base de datos relacional]()
-    - [4.3.2. Scripts de creación y carga de datos de la base de datos no relacional]()
-  - [4.4. Consultas]()
-    - [4.4.1. Consultas para la base de datos relacional]()
-    - [4.4.2. Consultas para la base de datos no relacional]()
+    - [4.2.2. Diagrama de documentos](#422-diagrama-de-documentos)
+  - [4.3. Scripts de creación de la base de datos](#43-scripts-de-creación-de-la-base-de-datos)
+    - [4.3.1. Scripts de creación y carga de datos de la base de datos relacional](#431-scripts-de-creación-y-carga-de-datos-de-la-base-de-datos-relacional)
+    - [4.3.2. Scripts de creación y carga de datos de la base de datos no relacional](#432-scripts-de-creación-y-carga-de-datos-de-la-base-de-datos-no-relacional)
+  - [4.4. Consultas](#44-consultas)
+    - [4.4.1. Consultas para la base de datos relacional](#441-consultas-para-la-base-de-datos-relacional)
+    - [4.4.2. Consultas para la base de datos no relacional](#442-consultas-para-la-base-de-datos-no-relacional)
 - [Conclusiones](#conclusiones)
 - [BIBLIOGRAFÍA](#bibliografía)
 - [ANEXOS](#anexos)
@@ -1259,6 +1259,101 @@ El proceso permite:
 
 ### 4.2.2. Diagrama de documentos
 
+El diagrama de documentos representa la estructura física de la base de datos no relacional de SolarPulse IoT implementada en MongoDB. A diferencia del diagrama entidad-relación físico del modelo relacional, en este diagrama cada caja representa una colección y muestra la forma de sus documentos: los campos, su tipo de dato BSON, los subdocumentos y arreglos embebidos, y las referencias hacia otras colecciones. El diagrama se elaboró a partir del diagrama físico normalizado, de las colecciones de la sección 3.4.1 y de los patrones de modelo de datos descritos en la sección 3.4.3. Este paso al modelo físico documental sigue el enfoque de modelado conceptual, lógico y físico para MongoDB que describen Coupal et al. (2023).
+
+> **Artefacto:** Diagrama de documentos realizado en Mongodb Compass
+
+<p align="center">
+  <img src="assets/Chapter-4/Diagrama_documento_SolarPulseIoT.png" alt="Diagrama de documentos en Mongodb Compass de SolarPulse IoT" width="800px">
+</p>
+
+#### Notación del diagrama de documentos
+
+El diagrama utiliza una representación orientada a documentos, en la cual cada caja corresponde a una colección de MongoDB y sus elementos internos representan campos, subdocumentos y arreglos BSON. Las líneas continuas indican referencias mediante ObjectId o valores extendidos entre colecciones. Por otra parte, los datos mostrados dentro de un mismo documento forman parte de patrones de embedding, subset o referencia extendida.
+
+La lectura del diagrama comienza en la colección central **instalaciones**, que contiene embebidos sus paneles y, dentro de cada panel, sus sensores. A la derecha se ubican los catálogos que la instalación referencia: **clientes**, **tarifas** con su distribuidora, **factores_emision** y **modelos_panel**. Las colecciones **mediciones** y **consumos_energia** almacenan las series de tiempo agrupadas por hora y por día.
+
+La parte superior representa la cadena operativa ante una falla: una anomalía detectada genera una alerta; la alerta puede derivar en una incidencia y esta, a su vez, da origen a una orden de mantenimiento. La orden concentra las actividades realizadas, el presupuesto de repuestos y el costo final. Finalmente, **usuarios** y **roles** controlan el acceso a la plataforma, mientras que **repuestos** mantiene el inventario de componentes.
+
+#### Correspondencia entre el modelo relacional y el modelo documental
+
+| Tabla (modelo relacional) | Ubicación en el modelo documental | Decisión |
+|---|---|---|
+| Rol | roles | Colección propia. |
+| Permiso | roles.permisos[] | Arreglo embebido: un rol tiene pocos permisos y se leen juntos. |
+| Rol_Permiso | Desaparece | La relación N:M queda resuelta por el arreglo permisos. |
+| Usuario | usuarios | Colección propia con referencia extendida a su rol. |
+| Tecnico | usuarios.perfil_tecnico | Subdocumento opcional (relación 1:1 con Usuario). |
+| Especialidad | usuarios.perfil_tecnico.especialidades[] | Arreglo de textos (catálogo pequeño). |
+| Tecnico_Especialidad | Desaparece | La relación N:M queda resuelta por el arreglo especialidades. |
+| Cliente | clientes | Colección propia. |
+| Tarifa_electrica | tarifas | Colección propia (compartida por muchas instalaciones). |
+| Distribuidora | tarifas.distribuidora | Subdocumento (solo contiene el nombre). |
+| Factor_emision | factores_emision | Colección propia (catálogo que cambia por año). |
+| Instalacion | instalaciones | Colección propia, documento central del modelo. |
+| Panel_Solar | instalaciones.paneles[] | Arreglo embebido (1 a pocos, se leen con la instalación). |
+| Modelo_panel | modelos_panel + paneles.modelo | Catálogo propio y copia de sus datos en cada panel. |
+| Sensor_iot | instalaciones.paneles[].sensores[] | Arreglo embebido dentro de su panel. |
+| Medicion | mediciones | Colección propia con patrón Bucket (sensor y hora). |
+| Consumo_energia | consumos_energia | Colección propia con patrón Bucket (instalación y día). |
+| Anomalia | anomalias | Colección propia (crece sin límite). |
+| Alerta | alertas | Colección propia y las 5 últimas copiadas en la instalación. |
+| Incidencia | incidencias | Colección propia con referencias a alerta y anomalía. |
+| Orden_mantenimiento | ordenes_mantenimiento | Colección propia que agrupa todo el trabajo. |
+| Actividad_mantenimiento | ordenes_mantenimiento.actividades[] | Arreglo embebido (solo existe en su orden). |
+| Detalle_presupuesto | ordenes_mantenimiento.presupuesto[] | Arreglo embebido con referencia al repuesto. |
+| Costo_mantenimiento | ordenes_mantenimiento.costo | Subdocumento (1 liquidación por orden). |
+| Repuesto | repuestos | Colección propia (inventario que cambia por separado). |
+
+#### Relaciones entre colecciones
+
+| Origen (campo) | Destino | Card. | Propósito |
+|---|---|---|---|
+| usuarios.rol.rol_id | roles | N:1 | Rol y permisos del usuario. |
+| usuarios.cliente_id | clientes | N:1 | Cliente al que pertenece el usuario. |
+| instalaciones.cliente.cliente_id | clientes | N:1 | Propietario de la instalación. |
+| instalaciones.tarifa.tarifa_id | tarifas | N:1 | Tarifa eléctrica contratada. |
+| instalaciones.factor_emision.factor_emision_id | factores_emision | N:1 | Factor de CO2 de la red. |
+| instalaciones.paneles.modelo.modelo_panel_id | modelos_panel | N:1 | Modelo de cada panel. |
+| instalaciones.alertas_recientes.alerta_id | alertas | N:1 | Últimas 5 alertas (Subset). |
+| mediciones.sensor_id | instalaciones.paneles[].sensores[] | N:1 | Sensor e instalación de la lectura. |
+| mediciones.instalacion_id | instalaciones | N:1 | Instalación de la lectura. |
+| consumos_energia.instalacion_id | instalaciones | N:1 | Instalación que consume. |
+| anomalias.instalacion_id | instalaciones | N:1 | Instalación de la anomalía. |
+| alertas.anomalia.anomalia_id | anomalias | N:1 | Anomalía que originó la alerta. |
+| alertas.instalacion.instalacion_id | instalaciones | N:1 | Instalación afectada. |
+| incidencias.alerta_id | alertas | N:1 | Alerta que derivó en la incidencia. |
+| incidencias.anomalia_id | anomalias | N:1 | Trazabilidad directa (RNF-9). |
+| incidencias.instalacion.instalacion_id | instalaciones | N:1 | Instalación impactada. |
+| ordenes_mantenimiento.incidencia_id | incidencias | N:1 | Incidencia que se atiende. |
+| ordenes_mantenimiento.instalacion.instalacion_id | instalaciones | N:1 | Lugar del trabajo. |
+| ordenes_mantenimiento.tecnico.usuario_id / actividades.tecnico.usuario_id | usuarios | N:1 | Técnico de la orden y de cada actividad. |
+| ordenes_mantenimiento.presupuesto.repuesto.repuesto_id | repuestos | N:1 | Repuesto cotizado o utilizado. |
+
+#### Índices principales del modelo documental
+
+| Colección | Índice | Uso |
+|---|---|---|
+| mediciones | `{ sensor_id: 1, fecha_inicio: 1 }` | Lecturas de un sensor por rango de fechas. |
+| mediciones | `{ instalacion_id: 1, fecha_inicio: 1 }` | Tableros por instalación (RNF-5). |
+| consumos_energia | `{ instalacion_id: 1, fecha: 1 }` (único) | Un solo documento por instalación y día. |
+| instalaciones | `{ "paneles.sensores.sensor_id": 1 }` | Ubicar el panel e instalación de un sensor. |
+| instalaciones | `{ ubicacion: "2dsphere" }` | Búsqueda de instalaciones por cercanía. |
+| usuarios | `{ email: 1 }` (único) | Inicio de sesión (RNF-1). |
+| clientes / repuestos | `{ nro_documento: 1 }` / `{ codigo_sku: 1 }` (únicos) | Evitar duplicados. |
+| alertas | `{ "instalacion.instalacion_id": 1, fecha_generacion: -1 }` | Alertas recientes de una planta. |
+| ordenes_mantenimiento | `{ "instalacion.instalacion_id": 1, fecha_programada: -1 }` | Historial de mantenimiento (US-15). |
+
+#### Tipos de datos BSON utilizados
+
+| Tipo BSON | Uso en el modelo |
+|---|---|
+| ObjectId | Identificadores (_id) y referencias entre documentos. |
+| String | Textos, códigos y estados (por ejemplo, estado_operativo, severidad y prioridad). |
+| Int / Double | Cantidades, tiempos en minutos y valores eléctricos (voltaje, corriente, potencia y temperatura). |
+| Decimal128 | Montos de dinero (precios, subtotales, costos, pérdidas y tarifas), para evitar errores de redondeo. |
+| Date | Fechas y marcas de tiempo (lecturas, consumos, alertas, incidencias y órdenes). |
+| Object / Array | Subdocumentos y arreglos embebidos (permisos, paneles, sensores, lecturas y actividades). |
 
 ## 4.3. Scripts de creación de la base de datos
 
